@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Pallopeli - Ketjureaktio</title>    <style>        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 0;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            overflow-y: auto;
+        }
+        
+        canvas {
+            border: 1px solid #333;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            margin-top: 20px;
+        }
+        
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 15px;
+            padding: 15px;
+            background-color: #e0e0e0;
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            width: 800px;
+        }
+        
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        
+        .control-group label {
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .control-group input {
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 80px;
+        }
+        
+        .game-info {
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        #score {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+          #history {
+            margin-top: 20px;
+            font-size: 16px;
+            color: #555;
+            background-color: #f8f8f8;
+            border-radius: 8px;
+            padding: 12px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            min-width: 400px;
+        }
+        
+        .history-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 8px;
+        }
+        
+        .history-settings {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 12px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .history-score-list {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        
+        .history-score-item {
+            font-size: 16px;
+            padding: 6px 10px;
+            background-color: #e8f4ea;
+            border-radius: 4px;
+        }
+        
+        .history-no-results {
+            font-style: italic;
+            color: #888;
+            padding: 10px 0;
+        }
+        
+        .button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        
+        .button:hover {
+            background-color: #45a049;
+        }
+        
+        .restart-button {
+            margin-top: 15px;
+            display: none;
+        }
+    </style>
+</head>
+<body>    <div class="controls">
+        <div class="control-group">
+            <label for="ballCount">Pallojen lukumäärä:</label>
+            <input type="number" id="ballCount" min="10" max="100" value="30">
+        </div>
+        <div class="control-group">
+            <label for="explosionDuration">Räjähdyksen kesto (ms):</label>
+            <input type="number" id="explosionDurationInput" min="500" max="3000" value="1000">
+        </div>
+        <div class="control-group">
+            <label for="ballSpeed">Pallojen nopeus:</label>
+            <input type="number" id="ballSpeedInput" min="1" max="10" value="2" step="0.5">
+        </div>
+        <button class="button" id="startButton">Aloita uusi peli</button>
+    </div>
+    
+    <canvas id="gameCanvas" width="800" height="600"></canvas>
+    
+    <div class="game-info">
+        <div id="score">Tulokset: 0</div>
+        <div id="history">Parhaat tuloksesi: -</div>
+        <button class="button restart-button" id="restartButton">Pelaa uudestaan</button>
+    </div>
+    
+    <script src="game.js"></script>
+</body>
+</html>
